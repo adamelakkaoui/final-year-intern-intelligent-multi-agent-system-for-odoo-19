@@ -1,5 +1,7 @@
 # Final-Year Intern – Intelligent Multi-Agent System for Odoo 19
 
+![AI & MULTI-AGENT SYSTEMS — Contextual assistance integrated into Odoo](assets/portfolio-banner.svg)
+
 Academic documentation of a final-year internship project carried out at Maxware Technology. The documented system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
 
 This public repository contains reviewed academic evidence only. The professional implementation, internal guides, deployment configuration, company data and original Git history are not published.
