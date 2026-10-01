@@ -2,11 +2,18 @@
 
 ![AI & MULTI-AGENT SYSTEMS — Contextual assistance integrated into Odoo](assets/portfolio-banner.svg)
 
+[Overview](#problem-and-objectives) · [Features](#documented-features) · [Architecture](#multi-agent-architecture) · [Stack](#odoo-integration-and-technologies) · [Demo and slides](#academic-documents-and-demonstration) · [Results](#reported-evaluation) · [Limitations](#testing-and-limitations)
+
+![Internship role, duration and context](assets/internship-scope.svg)
+
 Academic documentation of a final-year internship project carried out at Maxware Technology. The documented system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
 
 This public repository contains reviewed academic evidence only. The professional implementation, internal guides, deployment configuration, company data and original Git history are not published.
 
 ## Problem and objectives
+
+**Internship setting.** Maxware Technology hosted this final-year project in Kénitra, Morocco, from March to July 2026 in a hybrid arrangement. My role covered requirements analysis, architecture, implementation, integration, testing and evaluation. The assistant was designed to support users inside their ERP workflow.
+
 
 The report identifies a steep ERP learning curve, dense navigation, fragmented documentation, limited contextual help and reactive support. The project addresses those issues through five documented capabilities: interface-aware assistance, visual step-by-step guidance, adaptive learning, documentation retrieval, and multilingual/voice interaction.
 
@@ -57,6 +64,9 @@ The documented RAG pipeline uses official Odoo documentation and selected video 
 
 ## Odoo integration and technologies
 
+![Documented technology stack](assets/technology-stack.svg)
+
+
 - **Odoo layer:** Odoo 19, OWL, JavaScript, SCSS, Odoo HTTP controllers and ORM.
 - **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic, LangChain and LangGraph.
 - **Retrieval/data:** ChromaDB, Sentence Transformers, Redis and Odoo/PostgreSQL.
@@ -66,11 +76,25 @@ The documented RAG pipeline uses official Odoo documentation and selected video 
 
 ## Academic documents and demonstration
 
+### Demonstration
+
+[![Open the privacy-redacted academic video](assets/demo-preview.svg)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
+
+### Defence presentation
+
+[![Original defence presentation cover, reviewed for public display](assets/defence-cover.jpg)](presentations/odoo-mas-defense-fr.pptx)
+
+*Original cover from the portfolio’s defence-slide gallery. Click to download the reviewed 19-slide PowerPoint presentation.*
+
+
 - [French final-year report (PDF, 80 pages)](docs/academic-report-fr.pdf) — the supplied reduced copy omits its administrative cover page.
 - [French defence presentation (PPTX, 19 slides)](presentations/odoo-mas-defense-fr.pptx).
 - [Privacy-redacted demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo) — ERP, customer and contact areas are blurred while the assistant panel remains visible.
 
 ## Reported evaluation
+
+![Historical results reported in the thesis; not independently reproduced for this portfolio](assets/reported-results.svg)
+
 
 The following values are claims documented in the report and defence slides; they were **not independently reproduced** during portfolio preparation:
 
@@ -78,6 +102,16 @@ The following values are claims documented in the report and defence slides; the
 - Five end-to-end Playwright flows reported as validated.
 - A RAG evaluation over 65 question/document pairs and 12 modules, reporting global Precision@5 `0.843` and MRR `0.973`; CRM is reported below the target at `0.667`.
 - Reported first SSE signal near `0.2 s`, near-zero repeated-document queries with Redis caching, explicit guidance reduced to `3.4–5.5 s`, and quiz generation remaining at `8–15 s`.
+
+## Design decisions and tradeoffs
+
+- **Context plus evidence:** interface context identifies the current task; retrieval supplies documentation. A relevant screen alone does not guarantee a correct explanation.
+- **Separate orchestration from the interface:** OWL and the Odoo proxy handle the product boundary, while FastAPI and LangGraph coordinate the AI pipeline.
+- **Deterministic paths for explicit requests:** short-circuits reduce unnecessary model calls for known guidance and training intents.
+- **Resilience and response time:** the reported circuit breaker, provider abstraction, Redis cache and SSE stream address different failure and latency concerns. Quiz generation remains slower than explicit guidance in the reported measurements.
+- **Evaluate retrieval by module:** the reported CRM score illustrates why a global retrieval score can hide weaker domains.
+
+These points explain the documented architecture; they are not new experiments or claims of production readiness.
 
 ## Testing and limitations
 
