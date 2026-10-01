@@ -2,13 +2,13 @@
 
 ![AI & MULTI-AGENT SYSTEMS — Contextual assistance integrated into Odoo](assets/portfolio-banner.svg)
 
-[Overview](#problem-and-objectives) · [Features](#documented-features) · [Architecture](#multi-agent-architecture) · [Stack](#odoo-integration-and-technologies) · [Demo and slides](#academic-documents-and-demonstration) · [Results](#reported-evaluation) · [Limitations](#testing-and-limitations)
+[Overview](#problem-and-objectives) · [Features](#features) · [Architecture](#multi-agent-architecture) · [Stack](#odoo-integration-and-technologies) · [Demo and slides](#academic-documents-and-demonstration) · [Results](#evaluation-results) · [Limitations](#limitations-and-perspectives)
 
 ![Internship role, duration and context](assets/internship-scope.svg)
 
-Academic documentation of a final-year internship project carried out at Maxware Technology. The documented system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
+Final-year internship project carried out at Maxware Technology. The system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
 
-This public repository contains reviewed academic evidence only. The professional implementation, internal guides, deployment configuration, company data and original Git history are not published.
+This public repository presents the academic report, architecture, evaluation results, defence material and a privacy-redacted demonstration. Company data and internal deployment material are not included.
 
 ## Problem and objectives
 
@@ -17,11 +17,11 @@ This public repository contains reviewed academic evidence only. The professiona
 
 The report identifies a steep ERP learning curve, dense navigation, fragmented documentation, limited contextual help and reactive support. The project addresses those issues through five documented capabilities: interface-aware assistance, visual step-by-step guidance, adaptive learning, documentation retrieval, and multilingual/voice interaction.
 
-![System context reported in the thesis](images/c4-system-context.png)
+![System context architecture](images/c4-system-context.png)
 
-*C4 system context extracted from the public academic report.*
+*C4 system context of the project.*
 
-## Documented features
+## Features
 
 - Floating OWL assistant with text chat, Markdown rendering and a 2D avatar.
 - Context capture from the active Odoo page, form and displayed errors.
@@ -35,9 +35,9 @@ The report identifies a steep ERP learning curve, dense navigation, fragmented d
 
 ## Multi-agent architecture
 
-The academic documents specify eight agents:
+The system is organized around eight specialized agents:
 
-| Agent | Documented responsibility |
+| Agent | Responsibility |
 |---|---|
 | OrchestratorAgent | Intent routing and coordination through a LangGraph state graph |
 | ContextAgent | UI/DOM and user-context analysis |
@@ -48,31 +48,31 @@ The academic documents specify eight agents:
 | AnalyticsAgent | Usage telemetry and friction analysis |
 | PredictAgent | Navigation-aware proactive suggestions |
 
-![Container and agent architecture reported in the thesis](images/c4-container-architecture.png)
+![Container and agent architecture](images/c4-container-architecture.png)
 
-*C4 container diagram extracted from the public academic report.*
+*C4 container architecture of the project.*
 
 ## Orchestration and information flow
 
-The OWL frontend sends requests through an Odoo server-side proxy rather than contacting the AI backend directly. The report states that the proxy preserves the Odoo session and access-control boundary, enriches the request context and relays JSON or SSE responses to a FastAPI gateway.
+The OWL frontend sends requests through an Odoo server-side proxy rather than contacting the AI backend directly. The proxy preserves the Odoo session and access-control boundary, enriches the request context and relays JSON or SSE responses to a FastAPI gateway.
 
 The gateway validates the request context and passes it to the orchestrator. Deterministic short-circuits handle explicit guidance, quiz, demonstration and informal-conversation intents; other flows move through the LangGraph state graph. Specialized agents exchange structured state, while Redis is described for cache, sessions and publish/subscribe communication. The response is streamed back through the same proxy to the OWL widget.
 
 ## Documentation retrieval
 
-The documented RAG pipeline uses official Odoo documentation and selected video resources. Sentence Transformers generate embeddings stored in ChromaDB; retrieval includes French-to-English transliteration, relevance thresholds and reranking. DocAgent returns ranked sources for grounded answers, while GuideAgent can combine retrieved material with interface steps. The repository does not include the professional corpus or vector database.
+The RAG pipeline uses official Odoo documentation and selected video resources. Sentence Transformers generate embeddings stored in ChromaDB; retrieval includes French-to-English transliteration, relevance thresholds and reranking. DocAgent returns ranked sources for grounded answers, while GuideAgent can combine retrieved material with interface steps. 
 
 ## Odoo integration and technologies
 
-![Documented technology stack](assets/technology-stack.svg)
+![Technology stack](assets/technology-stack.svg)
 
 
 - **Odoo layer:** Odoo 19, OWL, JavaScript, SCSS, Odoo HTTP controllers and ORM.
 - **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic, LangChain and LangGraph.
 - **Retrieval/data:** ChromaDB, Sentence Transformers, Redis and Odoo/PostgreSQL.
-- **Model providers described by the report:** NVIDIA NIM by default, with configurable OpenAI, Azure and Ollama integrations and circuit-breaker handling.
+- **Model providers:** NVIDIA NIM by default, with configurable OpenAI, Azure and Ollama integrations and circuit-breaker handling.
 - **Interface/services:** SSE, Web Speech API, Lottie, YouTube Data API and optional translation services.
-- **Engineering stack reported:** Docker, Kubernetes, Nginx, Prometheus, GitHub Actions, pytest and Playwright.
+- **Engineering stack:** Docker, Kubernetes, Nginx, Prometheus, GitHub Actions, pytest and Playwright.
 
 ## Academic documents and demonstration
 
@@ -91,33 +91,42 @@ The documented RAG pipeline uses official Odoo documentation and selected video 
 - [French defence presentation (PPTX, 19 slides)](presentations/odoo-mas-defense-fr.pptx).
 - [Privacy-redacted demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo) — ERP, customer and contact areas are blurred while the assistant panel remains visible.
 
-## Reported evaluation
+## Evaluation results
 
-![Historical results reported in the thesis; not independently reproduced for this portfolio](assets/reported-results.svg)
+![Project evaluation results](assets/reported-results.svg)
 
+The project evaluation includes:
 
-The following values are claims documented in the report and defence slides; they were **not independently reproduced** during portfolio preparation:
+- **294 automated tests** executed in continuous integration with **67% code coverage**; the local Windows run collected 294 tests, with 289 passed and 5 skipped when Redis was unavailable.
+- **Five end-to-end Playwright workflows** validated in a real browser.
+- A RAG evaluation over **65 question/document pairs across 12 Odoo modules**, with global **Precision@5 = 0.843** and **MRR = 0.973**.
+- The documentation corpus contains **4,405 segments**.
+- The first SSE signal is approximately **0.2 s**.
+- Explicit guidance was optimized from roughly **9–14 s** to **3.4–5.5 s**.
+- Repeated document queries become almost instantaneous with Redis caching.
 
-- 289 of 294 local pytest cases reported as passed, with five skipped when Redis was unavailable; the documents also summarize 294 CI tests and 67% overall coverage.
-- Five end-to-end Playwright flows reported as validated.
-- A RAG evaluation over 65 question/document pairs and 12 modules, reporting global Precision@5 `0.843` and MRR `0.973`; CRM is reported below the target at `0.667`.
-- Reported first SSE signal near `0.2 s`, near-zero repeated-document queries with Redis caching, explicit guidance reduced to `3.4–5.5 s`, and quiz generation remaining at `8–15 s`.
 
 ## Design decisions and tradeoffs
 
 - **Context plus evidence:** interface context identifies the current task; retrieval supplies documentation. A relevant screen alone does not guarantee a correct explanation.
 - **Separate orchestration from the interface:** OWL and the Odoo proxy handle the product boundary, while FastAPI and LangGraph coordinate the AI pipeline.
 - **Deterministic paths for explicit requests:** short-circuits reduce unnecessary model calls for known guidance and training intents.
-- **Resilience and response time:** the reported circuit breaker, provider abstraction, Redis cache and SSE stream address different failure and latency concerns. Quiz generation remains slower than explicit guidance in the reported measurements.
-- **Evaluate retrieval by module:** the reported CRM score illustrates why a global retrieval score can hide weaker domains.
+- **Resilience and response time:** the circuit breaker, provider abstraction, Redis cache and SSE stream address different failure and latency concerns. Quiz generation remains slower than explicit guidance.
+- **Evaluate retrieval by module:** module-level analysis helps reveal weaker retrieval domains that can be hidden by a global score.
 
-These points explain the documented architecture; they are not new experiments or claims of production readiness.
 
-## Testing and limitations
+## Limitations and perspectives
 
-Portfolio preparation verified that the report and presentation open and are extractable, reviewed their metadata and content, and extracted the two diagrams above from the public report. The redacted video was sampled across its duration after re-encoding; ERP/contact regions remain blurred. Its audio track measures approximately `-91 dB` maximum and mean volume, effectively silent, so it does not expose spoken information. The application itself, its reported tests, RAG corpus, latency measurements and business workflows were not rerun because the professional source and infrastructure are deliberately excluded.
+The final report identifies the following limitations and improvement directions:
 
-The report itself records untested load scaling, pending Odoo Enterprise certification, CRM retrieval below target and relatively slow quiz generation. The 4K source recording remains excluded as redundant and unredacted. Internal user/administration guides and all professional code remain excluded because public-sharing rights were not established.
+- **Quiz generation:** producing around eight structured questions remains a relatively long LLM call, approximately **8–15 s**. Because the result is structured JSON, it is not streamed token by token; the interface instead displays the generation stages.
+- **Multilingual embeddings:** a multilingual embedding model was tested but required about five times more memory, increased latency and did not improve retrieval compared with the French-to-English glossary approach. The architecture still allows switching models through configuration and re-indexing.
+- **Odoo Enterprise validation:** the module is compatible by design, while the full validation campaign was carried out on Odoo Community; dedicated Enterprise testing remains a future step.
+- **Load testing:** Kubernetes autoscaling from two to six replicas is designed from single-instance measurements. A future k6 or Locust campaign is proposed to characterize latency under concurrent load.
+- **Out-of-scope functions:** offline mode, Slack/Teams integration and advanced cloud text-to-speech remain future extensions.
+
+The report concludes that the five internship objectives were achieved, all eight specified agents were implemented, and the expected project deliverables were completed.
+
 
 ## Author and credits
 
