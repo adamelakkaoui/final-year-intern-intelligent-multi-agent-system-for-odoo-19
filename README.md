@@ -8,8 +8,6 @@
 
 Final-year internship project carried out at Maxware Technology. The system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
 
-This public repository presents the academic report, architecture, evaluation results, defence material and a privacy-redacted demonstration. Company data and internal deployment material are not included.
-
 ## Problem and objectives
 
 **Internship setting.** Maxware Technology hosted this final-year project in Kénitra, Morocco, from March to July 2026 in a hybrid arrangement. My role covered requirements analysis, architecture, implementation, integration, testing and evaluation. The assistant was designed to support users inside their ERP workflow.
@@ -78,18 +76,18 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 ### Demonstration
 
-[![Open the privacy-redacted academic video](assets/demo-preview.svg)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
+[![Open the project demonstration](assets/demo-preview.svg)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
 
 ### Defence presentation
 
-[![Original defence presentation cover, reviewed for public display](assets/defence-cover.jpg)](presentations/odoo-mas-defense-fr.pptx)
+[![Defence presentation cover](assets/defence-cover.jpg)](presentations/odoo-mas-defense-fr.pptx)
 
-*Original cover from the portfolio’s defence-slide gallery. Click to download the reviewed 19-slide PowerPoint presentation.*
+*Defence presentation cover. Click to open the 19-slide PowerPoint presentation.*
 
 
-- [Complete French final-year report (PDF, 81 pages)](docs/academic-report-fr.pdf) — original academic report including its cover page, technical chapters, figures, evaluation and appendices.
+- [Complete French final-year report (PDF, 81 pages)](docs/academic-report-fr.pdf).
 - [French defence presentation (PPTX, 19 slides)](presentations/odoo-mas-defense-fr.pptx).
-- [Privacy-redacted demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo) — ERP, customer and contact areas are blurred while the assistant panel remains visible.
+- [Project demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo).
 
 ## Evaluation results
 
@@ -97,22 +95,13 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 The project evaluation includes:
 
-- **294 automated tests** executed in continuous integration with **67% code coverage**; the local Windows run collected 294 tests, with 289 passed and 5 skipped when Redis was unavailable.
+- **294 automated tests** executed in continuous integration with **67% code coverage**.
 - **Five end-to-end Playwright workflows** validated in a real browser.
 - A RAG evaluation over **65 question/document pairs across 12 Odoo modules**, with global **Precision@5 = 0.843** and **MRR = 0.973**.
 - The documentation corpus contains **4,405 segments**.
 - The first SSE signal is approximately **0.2 s**.
 - Explicit guidance was optimized from roughly **9–14 s** to **3.4–5.5 s**.
 - Repeated document queries become almost instantaneous with Redis caching.
-
-
-## Design decisions and tradeoffs
-
-- **Context plus evidence:** interface context identifies the current task; retrieval supplies documentation. A relevant screen alone does not guarantee a correct explanation.
-- **Separate orchestration from the interface:** OWL and the Odoo proxy handle the product boundary, while FastAPI and LangGraph coordinate the AI pipeline.
-- **Deterministic paths for explicit requests:** short-circuits reduce unnecessary model calls for known guidance and training intents.
-- **Resilience and response time:** the circuit breaker, provider abstraction, Redis cache and SSE stream address different failure and latency concerns. Quiz generation remains slower than explicit guidance.
-- **Evaluate retrieval by module:** module-level analysis helps reveal weaker retrieval domains that can be hidden by a global score.
 
 
 ## Limitations and perspectives
@@ -132,4 +121,4 @@ The report concludes that the five internship objectives were achieved, all eigh
 
 - Adam El Akkaoui — final-year intern and author of the academic report and defence material.
 
-Academic supervision: Pr. Ali Choukri. Company supervision acknowledged in the report: Youssef Chadi, Maxware Technology. Company and third-party names are used only to describe the documented internship context; no ownership or licence is asserted.
+Academic supervision: Pr. Ali Choukri. Company supervision: Youssef Chadi, Maxware Technology.
