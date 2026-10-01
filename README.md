@@ -87,7 +87,7 @@ The documented RAG pipeline uses official Odoo documentation and selected video 
 *Original cover from the portfolio’s defence-slide gallery. Click to download the reviewed 19-slide PowerPoint presentation.*
 
 
-- [French final-year report (PDF, 80 pages)](docs/academic-report-fr.pdf) — the supplied reduced copy omits its administrative cover page.
+- [Complete French final-year report (PDF, 81 pages)](docs/academic-report-fr.pdf) — original academic report including its cover page, technical chapters, figures, evaluation and appendices.
 - [French defence presentation (PPTX, 19 slides)](presentations/odoo-mas-defense-fr.pptx).
 - [Privacy-redacted demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo) — ERP, customer and contact areas are blurred while the assistant panel remains visible.
 
