@@ -2,8 +2,9 @@
 
 ![AI & MULTI-AGENT SYSTEMS — Contextual assistance integrated into Odoo](assets/portfolio-banner.svg)
 
-
 [Overview](#problem-and-objectives) · [Features](#features) · [Architecture](#multi-agent-architecture) · [Stack](#odoo-integration-and-technologies) · [Demo and slides](#academic-documents-and-demonstration) · [Results](#evaluation-results) · [Limitations](#limitations-and-perspectives)
+
+![Internship role, duration and context](assets/internship-scope.svg)
 
 Final-year internship project carried out at Maxware Technology. The system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
 
@@ -60,6 +61,8 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 ## Odoo integration and technologies
 
+![Project technology stack](assets/technology-stack.svg)
+
 - **Odoo layer:** Odoo 19, OWL, JavaScript, SCSS, Odoo HTTP controllers and ORM.
 - **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic, LangChain and LangGraph.
 - **Retrieval/data:** ChromaDB, Sentence Transformers, Redis and Odoo/PostgreSQL.
@@ -71,7 +74,7 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 ### Demonstration
 
-[Open the project demonstration](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
+[![Open the Odoo project demonstration](assets/demo-preview.svg)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
 
 ### Defence presentation
 
@@ -84,6 +87,8 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 - [Project demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo).
 
 ## Evaluation results
+
+![Project evaluation results](assets/reported-results.svg)
 
 The project evaluation includes:
 
