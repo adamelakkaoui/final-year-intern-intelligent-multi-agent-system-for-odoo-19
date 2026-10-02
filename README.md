@@ -1,17 +1,12 @@
 # Final-Year Intern – Intelligent Multi-Agent System for Odoo 19
 
-![AI & MULTI-AGENT SYSTEMS — Contextual assistance integrated into Odoo](assets/portfolio-banner.svg)
-
 [Overview](#problem-and-objectives) · [Features](#features) · [Architecture](#multi-agent-architecture) · [Stack](#odoo-integration-and-technologies) · [Demo and slides](#academic-documents-and-demonstration) · [Results](#evaluation-results) · [Limitations](#limitations-and-perspectives)
-
-![Internship role, duration and context](assets/internship-scope.svg)
 
 Final-year internship project carried out at Maxware Technology. The system integrates a contextual multi-agent assistant into Odoo 19 to reduce ERP learning friction, guide users directly in the interface, retrieve grounded documentation and support adaptive training.
 
 ## Problem and objectives
 
 **Internship setting.** Maxware Technology hosted this final-year project in Kénitra, Morocco, from March to July 2026 in a hybrid arrangement. My role covered requirements analysis, architecture, implementation, integration, testing and evaluation. The assistant was designed to support users inside their ERP workflow.
-
 
 The report identifies a steep ERP learning curve, dense navigation, fragmented documentation, limited contextual help and reactive support. The project addresses those issues through five documented capabilities: interface-aware assistance, visual step-by-step guidance, adaptive learning, documentation retrieval, and multilingual/voice interaction.
 
@@ -62,9 +57,6 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 ## Odoo integration and technologies
 
-![Technology stack](assets/technology-stack.svg)
-
-
 - **Odoo layer:** Odoo 19, OWL, JavaScript, SCSS, Odoo HTTP controllers and ORM.
 - **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic, LangChain and LangGraph.
 - **Retrieval/data:** ChromaDB, Sentence Transformers, Redis and Odoo/PostgreSQL.
@@ -76,7 +68,7 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 ### Demonstration
 
-[![Open the project demonstration](assets/demo-preview.svg)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
+[Open the project demonstration](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo)
 
 ### Defence presentation
 
@@ -84,14 +76,11 @@ The RAG pipeline uses official Odoo documentation and selected video resources. 
 
 *Defence presentation cover. Click to open the 19-slide PowerPoint presentation.*
 
-
 - [Complete French final-year report (PDF, 81 pages)](docs/academic-report-fr.pdf).
 - [French defence presentation (PPTX, 19 slides)](presentations/odoo-mas-defense-fr.pptx).
 - [Project demonstration (GitHub Release)](https://github.com/adamelakkaoui/final-year-intern-intelligent-multi-agent-system-for-odoo-19/releases/tag/academic-demo).
 
 ## Evaluation results
-
-![Project evaluation results](assets/reported-results.svg)
 
 The project evaluation includes:
 
@@ -102,7 +91,6 @@ The project evaluation includes:
 - The first SSE signal is approximately **0.2 s**.
 - Explicit guidance was optimized from roughly **9–14 s** to **3.4–5.5 s**.
 - Repeated document queries become almost instantaneous with Redis caching.
-
 
 ## Limitations and perspectives
 
@@ -115,7 +103,6 @@ The final report identifies the following limitations and improvement directions
 - **Out-of-scope functions:** offline mode, Slack/Teams integration and advanced cloud text-to-speech remain future extensions.
 
 The report concludes that the five internship objectives were achieved, all eight specified agents were implemented, and the expected project deliverables were completed.
-
 
 ## Author and credits
 
